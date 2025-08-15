@@ -8,10 +8,24 @@
 import SwiftUI
 
 struct ViewOne: View {
+    let options = ["First", "Second", "Third"]
+    
+    @State private var selectedOption = 0
+    
     var body: some View {
         NavigationStack {
-            Text("Hello, World!")
-                .toolbar { ViewOneToolbarView() }
+            Picker("Options", selection: $selectedOption) {
+                ForEach(0..<self.options.count, id: \.self) {
+                    Text(self.options[$0])
+                }
+            }
+            .pickerStyle(.segmented)
+            .toolbar { ViewOneToolbarView() }
+            
+            Spacer()
+            Text("\(options[selectedOption]) view")
+            
+            Spacer()
         }
     }
 }
