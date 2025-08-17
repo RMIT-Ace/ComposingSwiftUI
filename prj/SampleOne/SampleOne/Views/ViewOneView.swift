@@ -23,7 +23,7 @@ struct ViewOneView: View {
             .toolbar { ViewOneToolbarView() }
             
             switch (selectedOption) {
-            case 0: Text("View One - Page One")
+            case 0: ViewOnePageOneView()
             default: Text("View One - Default")
             }
             
