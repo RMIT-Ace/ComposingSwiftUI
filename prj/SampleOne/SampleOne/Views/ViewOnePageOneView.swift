@@ -7,6 +7,12 @@
 
 import SwiftUI
 
+// TODO: move this to Model folder
+struct Program: Hashable {
+    let imageName: String
+    let title: String
+}
+
 struct ViewOnePageOneView: View {
     
     @State private var breadcrumbs: [String] = [
@@ -15,6 +21,17 @@ struct ViewOnePageOneView: View {
     
     @State private var sections: [String] = [
         "Week 1", "Beginner", "Start"
+    ]
+    
+    private var programs: [Program] = [
+        Program(
+            imageName: "marvel1",
+            title: "Avenger End Game"
+        ),
+        Program(
+            imageName: "marvel2",
+            title: "Ironman and comrades"
+        )
     ]
 
     var body: some View {
@@ -32,6 +49,14 @@ struct ViewOnePageOneView: View {
                     .bold()
                 
                 BreadcrumbView($sections)
+                
+                ScrollView(.horizontal) {
+                    HStack {
+                        ForEach(programs, id: \.self) { program in
+                            ProgramPanelView(program)
+                        }
+                    }
+                }
             }
         }
     }
