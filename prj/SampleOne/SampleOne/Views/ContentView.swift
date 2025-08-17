@@ -11,7 +11,7 @@ struct ContentView: View {
     var body: some View {
         TabView {
             Tab("Tab 1", systemImage: "circle") {
-                ViewOne()
+                ViewOneView()
             }
             Tab("Tab 2", systemImage: "triangle") {
                 Text("View 2")

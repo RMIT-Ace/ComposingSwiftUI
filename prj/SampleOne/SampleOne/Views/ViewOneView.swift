@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ViewOne: View {
+struct ViewOneView: View {
     let options = ["First", "Second", "Third"]
     
     @State private var selectedOption = 0
@@ -22,8 +22,10 @@ struct ViewOne: View {
             .pickerStyle(.segmented)
             .toolbar { ViewOneToolbarView() }
             
-            Spacer()
-            Text("\(options[selectedOption]) view")
+            switch (selectedOption) {
+            case 0: Text("View One - Page One")
+            default: Text("View One - Default")
+            }
             
             Spacer()
         }
@@ -31,5 +33,5 @@ struct ViewOne: View {
 }
 
 #Preview {
-    ViewOne()
+    ViewOneView()
 }
