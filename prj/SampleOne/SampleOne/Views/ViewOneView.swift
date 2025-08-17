@@ -19,12 +19,17 @@ struct ViewOneView: View {
                     Text(self.options[$0])
                 }
             }
-            .pickerStyle(.segmented)
+            .padding(.horizontal)
             .toolbar { ViewOneToolbarView() }
-            
+            .pickerStyle(.segmented)
+
             switch (selectedOption) {
-            case 0: ViewOnePageOneView()
-            default: Text("View One - Default")
+            case 0:
+                ViewOnePageOneView()
+                    .padding(.horizontal)
+
+            default:
+                Text("View One - Default")
             }
             
             Spacer()

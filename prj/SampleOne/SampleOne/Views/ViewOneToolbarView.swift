@@ -28,6 +28,8 @@ struct ViewOneToolbarView: View {
                     .font(.system(size: 30))
             }
         }
+        .padding(0)
+        .frame(maxWidth: .infinity)
     }
 }
 
