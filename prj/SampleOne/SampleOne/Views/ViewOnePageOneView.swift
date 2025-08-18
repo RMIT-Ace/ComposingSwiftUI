@@ -19,7 +19,7 @@ struct ViewOnePageOneView: View {
                     programHScrollView()
                 } header: {
                     HStack {
-                        Text("Weekly Workouts")
+                        Text("Weekly Programs")
                             .font(Font.title2.bold())
                             .foregroundStyle(Color.black)
                     }
@@ -34,7 +34,7 @@ struct ViewOnePageOneView: View {
                         Image(systemName: "gift")
                             .resizable()
                             .frame(width: 40, height: 40)
-                        Text("Train together")
+                        Text("Watch together")
                             .font(Font.title3.bold())
                         Spacer()
                         Text(">")
@@ -48,7 +48,7 @@ struct ViewOnePageOneView: View {
                 .background {
                     // Workaround - Hide Chevron by putting link in .background
                     NavigationLink("") {
-                        Text("Train Together View")
+                        Text("Watch Together View")
                     }
                 }
 
