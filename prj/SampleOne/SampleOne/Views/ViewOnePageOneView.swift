@@ -40,20 +40,20 @@ struct ViewOnePageOneView: View {
             }
             .listRowSeparator(.hidden)
 
-            VStack {
-                Color.blue.opacity(0.3)
-            }
-            .frame(height: 300)
-            .listRowSeparator(.hidden)
-
-            VStack {
-                Color.green.opacity(0.3)
-            }
-            .frame(height: 300)
-            .listRowSeparator(.hidden)
+            dummyListBlock()
+            dummyListBlock()
         }
         .listStyle(.plain)
         .scrollIndicators(.hidden)
+    }
+    
+    private func dummyListBlock(
+        color: Color = .gray.opacity(0.15)
+    ) -> some View {
+        VStack { color }
+            .clipShape(RoundedRectangle(cornerRadius: 10))
+            .frame(height: 300)
+            .listRowSeparator(.hidden)
     }
 }
 
