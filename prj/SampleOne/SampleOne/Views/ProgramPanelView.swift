@@ -22,15 +22,30 @@ struct ProgramPanelView: View {
                 .frame(width: 250, height: 150)
                 .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(2)
+            
             Text(program.title)
+                .bold()
+            
+            Text(program.subtitle)
+                .minimumScaleFactor(0.05)
+                .foregroundStyle(Color.gray)
+                .font(Font.subheadline)
         }
     }
 }
 
 #Preview {
     var programs: [Program] = [
-        Program(imageName: "marvel1", title: "Avenger End Game"),
-        Program(imageName: "marvel2", title: "Ironman and comrades")
+        Program(
+            imageName: "marvel1",
+            title: "Avenger End Game",
+            subtitle: "2 Seasons·15 Episodes·90-120 Mins"
+        ),
+        Program(
+            imageName: "marvel2",
+            title: "Ironman and comrades",
+            subtitle: "3 Seasons·30 Episodes·290-320 Mins"
+        )
     ]
     ScrollView(.horizontal) {
         HStack {
