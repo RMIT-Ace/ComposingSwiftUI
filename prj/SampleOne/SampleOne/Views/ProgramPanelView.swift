@@ -35,18 +35,8 @@ struct ProgramPanelView: View {
 }
 
 #Preview {
-    var programs: [Program] = [
-        Program(
-            imageName: "marvel1",
-            title: "Avenger End Game",
-            subtitle: "2 Seasons·15 Episodes·90-120 Mins"
-        ),
-        Program(
-            imageName: "marvel2",
-            title: "Ironman and comrades",
-            subtitle: "3 Seasons·30 Episodes·290-320 Mins"
-        )
-    ]
+    let programs = ViewOneViewModel.shared.programs
+    
     ScrollView(.horizontal) {
         HStack {
             ProgramPanelView(programs[0])

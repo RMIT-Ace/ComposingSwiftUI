@@ -8,32 +8,13 @@
 import SwiftUI
 
 struct ViewOnePageOneView: View {
+    @Environment(ViewOneViewModel.self) private var vm: ViewOneViewModel
     
-    @State private var breadcrumbs: [String] = [
-        "Home", "View One", "Page One"
-    ]
-    
-    @State private var sections: [String] = [
-        "Week 1", "Beginner", "Start"
-    ]
-    
-    private var programs: [Program] = [
-        Program(
-            imageName: "marvel1",
-            title: "Avenger End Game",
-            subtitle: "2 Seasons·15 Episodes·90-120 Mins"
-        ),
-        Program(
-            imageName: "marvel2",
-            title: "Ironman and comrades",
-            subtitle: "3 Seasons·30 Episodes·290-320 Mins"
-        )
-    ]
-
     var body: some View {
+        @Bindable var vm = vm
         ScrollView {
             VStack(alignment: .leading) {
-                BreadcrumbView($breadcrumbs)
+                BreadcrumbView($vm.breadcrumbs)
                     .foregroundStyle(Color.red)
                 
                 Text("Page One Title")
@@ -44,11 +25,11 @@ struct ViewOnePageOneView: View {
                     .font(.title2)
                     .bold()
                 
-                BreadcrumbView($sections)
+                BreadcrumbView($vm.sections)
                 
                 ScrollView(.horizontal) {
                     HStack {
-                        ForEach(programs, id: \.self) { program in
+                        ForEach(vm.programs, id: \.self) { program in
                             ProgramPanelView(program)
                         }
                     }
@@ -60,4 +41,6 @@ struct ViewOnePageOneView: View {
 
 #Preview {
     ViewOnePageOneView()
+        .padding()
+        .environment(ViewOneViewModel.shared)
 }

@@ -12,6 +12,8 @@ struct ViewOneView: View {
     
     @State private var selectedOption = 0
     
+    @State private var viewOneVM: ViewOneViewModel = .shared
+    
     var body: some View {
         NavigationStack {
             Picker("Options", selection: $selectedOption) {
@@ -27,6 +29,7 @@ struct ViewOneView: View {
             case 0:
                 ViewOnePageOneView()
                     .padding(.horizontal)
+                    .environment(viewOneVM)
 
             default:
                 Text("View One - Default")
