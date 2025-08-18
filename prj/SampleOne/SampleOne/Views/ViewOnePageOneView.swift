@@ -11,40 +11,89 @@ struct ViewOnePageOneView: View {
     @Environment(ViewOneViewModel.self) private var vm: ViewOneViewModel
     
     var body: some View {
-        @Bindable var vm = vm
-        List {
-            VStack(alignment: .leading) {
-                BreadcrumbView($vm.breadcrumbs)
-                    .foregroundStyle(Color.red)
-                    .font(Font.caption)
+        NavigationStack {
+            List {
+                pageTitleView()
                 
-                Text("Page One Title")
-                    .font(.title)
-                    .bold()
-                
-                Text("Page One Subtitle")
-                    .font(.title2)
-                    .bold()
-                
-                BreadcrumbView($vm.sections)
-                    .font(Font.subheadline)
-                
-                ScrollView(.horizontal) {
+                Section {
+                    programHScrollView()
+                } header: {
                     HStack {
-                        ForEach(vm.programs, id: \.self) { program in
-                            ProgramPanelView(program)
-                        }
+                        Text("Weekly Workouts")
+                            .font(Font.title2.bold())
+                            .foregroundStyle(Color.black)
                     }
                 }
-                .scrollIndicators(.hidden)
-            }
-            .listRowSeparator(.hidden)
+                .listRowInsets(
+                    EdgeInsets(top: 4, leading: 14, bottom: 0, trailing: 0)
+                )
 
-            dummyListBlock()
-            dummyListBlock()
+                ZStack {
+                    Color.red
+                    HStack {
+                        Image(systemName: "gift")
+                            .resizable()
+                            .frame(width: 40, height: 40)
+                        Text("Train together")
+                            .font(Font.title3.bold())
+                        Spacer()
+                        Text(">")
+                            .bold()
+                    }
+                    .padding(.horizontal)
+                    .frame(height: 100)
+                    .foregroundStyle(Color.white)
+                }
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .background {
+                    // Workaround - Hide Chevron by putting link in .background
+                    NavigationLink("") {
+                        Text("Train Together View")
+                    }
+                }
+
+                dummyListBlock()
+                dummyListBlock()
+            }
+            .listStyle(.plain)
+            .listSectionSpacing(0)
+            .scrollIndicators(.hidden)
         }
-        .listStyle(.plain)
-        .scrollIndicators(.hidden)
+    }
+    
+    private func pageTitleView() -> some View {
+        @Bindable var vm = vm
+        return VStack(alignment: .leading) {
+            BreadcrumbView($vm.breadcrumbs)
+                .foregroundStyle(Color.red)
+                .font(Font.caption)
+            
+            Text("Page One Title")
+                .font(.title)
+                .bold()
+            
+            Text("Page One Subtitle")
+                .font(.title2)
+                .bold()
+            
+            BreadcrumbView($vm.sections)
+                .font(Font.subheadline)
+        }
+        .listRowSeparator(.hidden)
+    }
+    
+    private func programHScrollView() -> some View {
+        return VStack(alignment: .leading) {
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(vm.programs, id: \.self) { program in
+                        ProgramPanelView(program)
+                    }
+                }
+            }
+            .scrollIndicators(.hidden)
+        }
+        .listRowSeparator(.hidden)
     }
     
     private func dummyListBlock(
