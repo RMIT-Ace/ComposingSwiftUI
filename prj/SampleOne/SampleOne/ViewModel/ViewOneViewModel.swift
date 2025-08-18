@@ -22,7 +22,9 @@ class ViewOneViewModel {
         Program(
             imageName: "marvel1",
             title: "Avenger End Game",
-            subtitle: "2 Seasons·15 Episodes·90-120 Mins"
+            subtitle: "2 Seasons·15 Episodes·90-120 Mins",
+            leftBadge: "Today",
+            rightBadge: "♡"
         ),
         Program(
             imageName: "marvel2",

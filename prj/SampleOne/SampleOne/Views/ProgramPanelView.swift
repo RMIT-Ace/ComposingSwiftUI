@@ -15,21 +15,41 @@ struct ProgramPanelView: View {
     }
     
     var body: some View {
-        VStack(alignment: .leading) {
-            Image(program.imageName)
-                .resizable()
-                .scaledToFill()
-                .frame(width: 250, height: 150)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .padding(2)
+        ZStack(alignment: .topLeading) {
+            VStack(alignment: .leading) {
+                Image(program.imageName)
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: 230, height: 160)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    .padding(2)
+                
+                Text(program.title)
+                    .bold()
+                    .minimumScaleFactor(0.01)
+                    .lineLimit(1)
+
+                Text(program.subtitle)
+                    .minimumScaleFactor(0.01)
+                    .lineLimit(1)
+                    .foregroundStyle(Color.gray)
+                    .font(Font.subheadline)
+            }
+            .padding(6)
+            .frame(maxWidth: 238)
+            .clipped()
             
-            Text(program.title)
-                .bold()
-            
-            Text(program.subtitle)
-                .minimumScaleFactor(0.05)
-                .foregroundStyle(Color.gray)
-                .font(Font.subheadline)
+            HStack {
+                Text(program.leftBadge)
+                    .padding(3)
+                    .background(Color.red)
+                    .font(Font.caption)
+                Spacer()
+                Text(program.rightBadge)
+                    .font(Font.caption)
+            }
+            .foregroundStyle(Color.white)
+            .padding()
         }
     }
 }

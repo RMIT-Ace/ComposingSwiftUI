@@ -12,10 +12,11 @@ struct ViewOnePageOneView: View {
     
     var body: some View {
         @Bindable var vm = vm
-        ScrollView {
+        List {
             VStack(alignment: .leading) {
                 BreadcrumbView($vm.breadcrumbs)
                     .foregroundStyle(Color.red)
+                    .font(Font.caption)
                 
                 Text("Page One Title")
                     .font(.title)
@@ -26,6 +27,7 @@ struct ViewOnePageOneView: View {
                     .bold()
                 
                 BreadcrumbView($vm.sections)
+                    .font(Font.subheadline)
                 
                 ScrollView(.horizontal) {
                     HStack {
@@ -34,8 +36,24 @@ struct ViewOnePageOneView: View {
                         }
                     }
                 }
+                .scrollIndicators(.hidden)
             }
+            .listRowSeparator(.hidden)
+
+            VStack {
+                Color.blue.opacity(0.3)
+            }
+            .frame(height: 300)
+            .listRowSeparator(.hidden)
+
+            VStack {
+                Color.green.opacity(0.3)
+            }
+            .frame(height: 300)
+            .listRowSeparator(.hidden)
         }
+        .listStyle(.plain)
+        .scrollIndicators(.hidden)
     }
 }
 
