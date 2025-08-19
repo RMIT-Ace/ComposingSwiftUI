@@ -10,6 +10,9 @@ import SwiftUI
 struct ViewOnePageOneView: View {
     @Environment(ViewOneViewModel.self) private var vm: ViewOneViewModel
     
+    let header1 = "Weekly Watching"
+    let header1Info = "Watch together with friends and family for this week.\n\nYes? No! Maybe?!"
+    
     var body: some View {
         NavigationStack {
             List {
@@ -18,41 +21,21 @@ struct ViewOnePageOneView: View {
                 Section {
                     programHScrollView()
                 } header: {
-                    HStack {
-                        Text("Weekly Programs")
-                            .font(Font.title2.bold())
-                            .foregroundStyle(Color.black)
-                    }
+                    HeaderInfoTrophyView( title: header1, info: header1Info, trophyCount: 3 )
                 }
                 .listRowInsets(
                     EdgeInsets(top: 4, leading: 14, bottom: 0, trailing: 0)
                 )
 
-                ZStack {
-                    Color.red
-                    HStack {
-                        Image(systemName: "gift")
-                            .resizable()
-                            .frame(width: 40, height: 40)
-                        Text("Watch together")
-                            .font(Font.title3.bold())
-                        Spacer()
-                        Text(">")
-                            .bold()
-                    }
-                    .padding(.horizontal)
-                    .frame(height: 100)
-                    .foregroundStyle(Color.white)
+                NavigationLinkPanelView {
+                    Text("This is Watch Together View - Here!")
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-                .background {
-                    // Workaround - Hide Chevron by putting link in .background
-                    NavigationLink("") {
-                        Text("Watch Together View")
-                    }
+                
+                Section {
+                    dummyListBlock()
+                } header: {
+                    HeaderInfoTrophyView(title: "Thriller", info: "This is a thriller movies", trophyCount: 1)
                 }
-
-                dummyListBlock()
                 dummyListBlock()
             }
             .listStyle(.plain)
