@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+/// An entry point to the app.
+///
+/// This app demonstrates compose-ability concepts of SwiftUI components.
+///
 @main
 struct SampleOneApp: App {
     var body: some Scene {

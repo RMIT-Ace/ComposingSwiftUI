@@ -10,9 +10,6 @@ import SwiftUI
 struct ViewOnePageOneView: View {
     @Environment(ViewOneViewModel.self) private var vm: ViewOneViewModel
     
-    let header1 = "Weekly Watching"
-    let header1Info = "Watch together with friends and family for this week.\n\nYes? No! Maybe?!"
-    
     var body: some View {
         NavigationStack {
             List {
@@ -21,20 +18,26 @@ struct ViewOnePageOneView: View {
                 Section {
                     programHScrollView()
                 } header: {
-                    HeaderInfoTrophyView( title: header1, info: header1Info, trophyCount: 3 )
+                    HeaderInfoTrophyView(
+                        title: vm.sectionInfos[0].header,
+                        info: vm.sectionInfos[0].note,
+                        trophyCount: vm.sectionInfos[0].trophyCount )
                 }
                 .listRowInsets(
                     EdgeInsets(top: 4, leading: 14, bottom: 0, trailing: 0)
                 )
 
                 NavigationLinkPanelView {
-                    Text("This is Watch Together View - Here!")
+                    Text(vm.sectionInfos[1].header)
                 }
                 
                 Section {
                     dummyListBlock()
                 } header: {
-                    HeaderInfoTrophyView(title: "Thriller", info: "This is a thriller movies", trophyCount: 1)
+                    HeaderInfoTrophyView(
+                        title: vm.sectionInfos[2].header,
+                        info: vm.sectionInfos[2].note,
+                        trophyCount: vm.sectionInfos[2].trophyCount)
                 }
                 dummyListBlock()
             }

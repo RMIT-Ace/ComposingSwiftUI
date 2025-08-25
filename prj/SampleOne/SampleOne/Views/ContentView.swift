@@ -7,6 +7,11 @@
 
 import SwiftUI
 
+/// A main view for this application.
+///
+/// A Tab View is used to demonstrate how application's user interfaces can be
+/// segmented into separate sub-views.
+///
 struct ContentView: View {
     var body: some View {
         TabView {

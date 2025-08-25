@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+/// Reusable view of type ToolbarContent. Provide consistent toolbar for all subviews
+/// of View One.
+///
 struct ViewOneToolbarView: ToolbarContent {
     var body: some ToolbarContent {
         ToolbarItem(placement: .topBarLeading) {
