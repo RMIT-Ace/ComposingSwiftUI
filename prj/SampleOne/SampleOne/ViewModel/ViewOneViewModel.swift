@@ -7,7 +7,7 @@
 
 import Foundation
 
-/// Manage and provide information to View One.
+/// Manage and provide information for View One (Movies).
 ///
 @Observable
 class ViewOneViewModel {

@@ -15,11 +15,11 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         TabView {
-            Tab("Tab 1", systemImage: "circle") {
+            Tab("View 1", systemImage: "movieclapper") {
                 ViewOneView()
             }
-            Tab("Tab 2", systemImage: "triangle") {
-                Text("View 2")
+            Tab("View 2", systemImage: "fork.knife") {
+                ViewTwoView()
             }
             Tab("Tab 3", systemImage: "square") {
                 Text("View 3")

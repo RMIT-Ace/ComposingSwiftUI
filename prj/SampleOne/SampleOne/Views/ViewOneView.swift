@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-/// View One
+/// View One (Movies)
 ///
 /// Represents a futher break-down of user-interface into sub views.
 /// The display of each sub-view is controlled by a user's selection via
