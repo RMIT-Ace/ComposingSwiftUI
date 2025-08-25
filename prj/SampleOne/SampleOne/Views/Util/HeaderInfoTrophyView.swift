@@ -18,7 +18,7 @@ struct HeaderInfoTrophyView: View {
         HStack(spacing: 2) {
             Text(title)
                 .font(Font.title2.bold())
-                .foregroundStyle(Color.black)
+                .foregroundStyle(.primary)
             Button {
                 isShowingInfo.toggle()
             } label: {
