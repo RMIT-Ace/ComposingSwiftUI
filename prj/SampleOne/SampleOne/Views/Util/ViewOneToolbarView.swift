@@ -7,32 +7,41 @@
 
 import SwiftUI
 
-struct ViewOneToolbarView: View {
-    var body: some View {
-        HStack(spacing: 4) {
-            NavigationLink {
-                Text("Brand Page")
-            } label: {
-                Image("brand-logo")
-            }
-            Spacer()
-            NavigationLink {
-                Text("User Status")
-            } label: {
-                Image(systemName: "drop")
-            }
-            NavigationLink {
-                Text("User Profile")
-            } label: {
-                Text("🐶")
-                    .font(.system(size: 30))
+struct ViewOneToolbarView: ToolbarContent {
+    var body: some ToolbarContent {
+        ToolbarItem(placement: .topBarLeading) {
+            HStack(spacing: 4) {
+                NavigationLink {
+                    Text("Brand Page")
+                } label: {
+                    Image("brand-logo")
+                }
             }
         }
-        .padding(0)
-        .frame(maxWidth: .infinity)
+        ToolbarItem(placement: .topBarTrailing) {
+            HStack {
+                Spacer()
+                NavigationLink {
+                    Text("User Status")
+                } label: {
+                    Image(systemName: "drop")
+                }
+                NavigationLink {
+                    Text("User Profile")
+                } label: {
+                    Text("🐶")
+                        .font(.system(size: 30))
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    ViewOneToolbarView()
+    NavigationView {
+        Text("Content")
+            .toolbar {
+                ViewOneToolbarView()
+            }
+    }
 }

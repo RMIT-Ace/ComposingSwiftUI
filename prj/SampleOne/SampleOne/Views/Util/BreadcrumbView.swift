@@ -21,7 +21,7 @@ struct BreadcrumbView: View {
 
     var body: some View {
         HStack(spacing: 2) {
-            ForEach(breadcrumbItems.enumerated(), id: \.offset) { index, item in
+            ForEach(Array(breadcrumbItems.enumerated()), id: \.offset) { index, item in
                 Text(item)
                 if index < breadcrumbItems.count - 1 {
                     Text("·")
